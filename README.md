@@ -27,7 +27,7 @@ Follow these steps to set up the project locally:
    ```bash
    git clone https://github.com/Praxxav/Medium-blogs.git
    cd Medium-blogs
-
+##  video link: https://www.loom.com/share/bf068e3d7263473bbd1983e88cab15a1
 Install Dependencies
 
 Navigate to the frontend and backend directories and install the required dependencies.
@@ -79,3 +79,4 @@ Create a new branch (git checkout -b feature/your-feature).
 Make your changes and commit them (git commit -am 'Add new feature').
 Push to the branch (git push origin feature/your-feature).
 Create a new Pull Request.
+
