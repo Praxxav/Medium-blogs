@@ -50,7 +50,7 @@ Create a .env file in the backend directory and add the necessary environment va
 
 bash
 Copy code
-MONGO_URI=your_mongodb_connection_string
+DATABASE_URL=your_Avien_connection_string
 JWT_SECRET=your_jwt_secret_key
 Run the Project
 
