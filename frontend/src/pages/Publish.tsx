@@ -21,18 +21,29 @@ export const Publish = () => {
                     setDescription(e.target.value)
                 }} />
                 <button onClick={async () => {
-                    const response = await axios.post(`${BACKEND_URL}/api/v1/blog`, {
-                        title,
-                        content: description
-                    }, {
-                        headers: {
-                            Authorization: localStorage.getItem("token")
-                        }
-                    });
-                    navigate(`/blog/${response.data.id}`)
-                }} type="submit" className="mt-4 inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
-                    Publish post
-                </button>
+    const token = localStorage.getItem("token"); // Ensure the key matches how it's stored
+    if (!token) {
+        alert("You must be logged in to publish a blog.");
+        return;
+    }
+    try {
+        const response = await axios.post(`${BACKEND_URL}/api/v1/blog`, {
+            title,
+            content: description
+        }, {
+            headers: {
+                Authorization: `Bearer ${token}` // Ensure the token is correctly formatted
+            }
+        });
+        navigate(`/blog/${response.data.id}`)
+    } catch (error) {
+        console.error("Error publishing blog:", error);
+        alert("Failed to publish blog. Please try again.");
+    }
+}} type="submit" className="mt-4 inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
+    Publish post
+</button>
+
             </div>
         </div>
     </div>
